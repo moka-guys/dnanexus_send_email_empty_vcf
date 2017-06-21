@@ -1,0 +1,42 @@
+{
+  "name": "if_empty_vcf_send_email",
+  "title": "if empty vcf send email",
+  "summary": "v1.0 - if empty vcf send email",
+  "tags": [
+    "email", "cancer","swift"
+  ],
+  "properties": {
+    "github release": "v1.0"
+  },
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "name": "vcfs",
+      "label": "all vcfs from varscan",
+      "help": "A samamba bedfile.",
+      "class": "array:file",
+      "patterns": ["*.vcf"]
+    },
+    {
+      "name": "email",
+      "label": "email address to notify",
+      "help": "email address to notify.",
+      "class": "string"
+    }
+  ],
+  "outputSpec":[],
+    "runSpec": {
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x2"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  },
+  "access": {
+    "network": [  
+    "*"
+    ]
+  }
+}
