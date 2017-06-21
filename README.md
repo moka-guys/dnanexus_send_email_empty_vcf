@@ -13,13 +13,13 @@ This email therefore explains the absence of any vcfs from Ingenuity.
 This app requires two inputs:
 
 1.  A array of vcf files
-2. An email address (optional)
+2. Email addresses - maximum 2 (optional)
 
 
 ## What does this app do?
 * This app loops through all the vcf files, selecting the desired vcf file (varscan.vcf - not varscan.bedfiltered.vcf) 
 * If there are no variants in the file , add this to a list of 'empty' vcfs
-* Once all files have been read an email is sent to the moka-guys mailing list and, if provided, to the email stated in the input.
+* Once all files have been read an email is sent to the moka-guys mailing list and, if provided, to the email(s) stated in the input.
 
 
 ## Created by
