@@ -21,7 +21,15 @@
       "name": "email",
       "label": "email address to notify",
       "help": "email address to notify.",
-      "class": "string"
+      "class": "string",
+      "optional": true
+    },
+    {
+      "name": "email2",
+      "label": "email address to notify",
+      "help": "email address to notify.",
+      "class": "string",
+      "optional": true
     }
   ],
   "outputSpec":[],

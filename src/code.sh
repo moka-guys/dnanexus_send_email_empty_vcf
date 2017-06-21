@@ -8,6 +8,13 @@ set -e -x -o pipefail
 dx-download-all-inputs 
 
 echo $email
+if [[  $email != *[@]*   ]]; then
+	email="ignore"
+fi
 
+echo $email2
+if [[  $email2 !=  *[@]*  ]]; then
+	email2="ignore"
+fi
 #call python script, passing the email address to be notified
-python send_email.py -e $email
+python send_email.py -e $email -f $email2

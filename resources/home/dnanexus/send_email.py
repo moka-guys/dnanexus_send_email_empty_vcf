@@ -17,16 +17,17 @@ class send_email():
 	def go(self,argv):
 		# capture arguments from command line
 		try:
-			opts, args = getopt.getopt(argv, 'e:',['email='])
+			opts, args = getopt.getopt(argv, 'e:f:')
 		except getopt.GetoptError:
 			print "Unrecognised flag provided"
 			sys.exit()
 		
-		# capture the email address from the -e argumnet
+		# capture the email address from the -e and -f arguments
 		for opt, arg in opts:
-			if opt in('-e','--email'):
-				#append the email address to the 'you' list (who to send the email to)
-				you.append(arg)
+			if opt in('-e','-f'):
+				if arg !="ignore":
+					#append the email address to the 'you' list (who to send the email to)
+					you.append(arg)
 		
 		# loop through the vcf inouts
 		for dir,subdir,filelist in os.walk("/home/dnanexus/in/vcfs/"):
@@ -45,7 +46,7 @@ class send_email():
 							#skip headers
 							if line.startswith('#'):
 								pass
-							#]count the number of non-empty rows
+							#count the number of non-empty rows
 							elif len(line) >1:
 								variant_count+=1
 							else:
