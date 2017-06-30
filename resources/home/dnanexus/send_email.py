@@ -8,7 +8,7 @@ import smtplib
 class send_email():
 	def __init__(self):
 		# email message
-		self.email_subject="SWIFT ALERT: Empty VCFs present in run"
+		self.email_subject=""
 		self.email_message=""
 		self.email_priority=3
 		#list of empty vcfs
@@ -63,9 +63,17 @@ class send_email():
 
 		#if there are empty vcfs 
 		if len(self.list_of_empty_vcfs) > 0:
-			print "sending email..."
+			print "sending email to say empty vcfs have been found"
+			self.email_subject="SWIFT ALERT: "+str(len(self.list_of_empty_vcfs))+"  empty VCFs present in run"
 			# set the email message to report a list of empty vcfs, one per line
 			self.email_message="The following samples have empty vcfs:\n"+"\n".join(self.list_of_empty_vcfs)
+			#send the email
+			self.send_an_email()
+		else:
+			self.email_subject="SWIFT ALERT: 0 VCFs present in run"
+			print "sending email to say empty vcfs have been found"
+			# set the email message to report a list of empty vcfs, one per line
+			self.email_message="No empty VCFS present"
 			#send the email
 			self.send_an_email()
 
