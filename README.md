@@ -1,4 +1,4 @@
-# dnanexus_send_email_empty_vcf - v1.0
+# dnanexus_check_for_empty_vcf - v1.0
 
 ## What does this app do?
 This app takes an array of VCF files produced by the varscan variant caller run during the Amplivar cancer pipeline.
@@ -6,7 +6,6 @@ This app takes an array of VCF files produced by the varscan variant caller run 
 Empty vcfs will be rejected when importing into Ingenuity. 
 
 This app counts the number of variants present in each VCF. A count of empty VCFs is sent via email to the specified email accounts, explaining the absence of any vcfs from Ingenuity.
-
 
 
 ## What data are required for this app to run?

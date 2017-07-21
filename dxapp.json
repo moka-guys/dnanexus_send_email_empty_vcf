@@ -1,7 +1,7 @@
 {
-  "name": "if_empty_vcf_send_email",
-  "title": "if empty vcf send email",
-  "summary": "v1.0 - if empty vcf send email",
+  "name": "check_for_empty_vcf",
+  "title": "check for empty vcf",
+  "summary": "v1.0 - check for empty vcf",
   "tags": [
     "email", "cancer","swift"
   ],
@@ -13,7 +13,7 @@
     {
       "name": "vcfs",
       "label": "all vcfs from varscan",
-      "help": "A samamba bedfile.",
+      "help": "A list of vcf files that are sent to Ingenuity.",
       "class": "array:file",
       "patterns": ["*.vcf"]
     },
@@ -22,7 +22,7 @@
       "label": "email address to notify",
       "help": "email address to notify.",
       "class": "string",
-      "optional": false
+      "optional": true
     },
     {
       "name": "email2",
