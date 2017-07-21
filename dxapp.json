@@ -22,7 +22,7 @@
       "label": "email address to notify",
       "help": "email address to notify.",
       "class": "string",
-      "optional": true
+      "optional": false
     },
     {
       "name": "email2",
