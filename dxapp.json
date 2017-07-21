@@ -1,0 +1,50 @@
+{
+  "name": "check_for_empty_vcf",
+  "title": "check for empty vcf",
+  "summary": "v1.0 - check for empty vcf",
+  "tags": [
+    "email", "cancer","swift"
+  ],
+  "properties": {
+    "github release": "v1.0"
+  },
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "name": "vcfs",
+      "label": "all vcfs from varscan",
+      "help": "A list of vcf files that are sent to Ingenuity.",
+      "class": "array:file",
+      "patterns": ["*.vcf"]
+    },
+    {
+      "name": "email",
+      "label": "email address to notify",
+      "help": "email address to notify.",
+      "class": "string",
+      "optional": true
+    },
+    {
+      "name": "email2",
+      "label": "email address to notify",
+      "help": "email address to notify.",
+      "class": "string",
+      "optional": true
+    }
+  ],
+  "outputSpec":[],
+    "runSpec": {
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem1_ssd1_x2"
+      }
+    },
+    "file": "src/code.sh",
+    "interpreter": "bash"
+  },
+  "access": {
+    "network": [  
+    "*"
+    ]
+  }
+}
