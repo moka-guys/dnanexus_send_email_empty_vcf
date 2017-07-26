@@ -4,6 +4,7 @@ import sys
 import getopt
 import os
 import smtplib
+import gzip
 
 class send_email():
 	def __init__(self):
@@ -38,7 +39,7 @@ class send_email():
 				# print file name
 				print file
 				# if it's the required vcf # may need changing to bedfiltered.vcf
-				if file.endswith('varscan.vcf'):
+				if file.endswith('.vcf'):
 					#open the file
 					with open(os.path.join(dir,file),'r') as vcf:
 						# loop through each line
@@ -51,6 +52,19 @@ class send_email():
 								variant_count+=1
 							else:
 								pass
+				elif file.endswith('.vcf.gz'):
+					with gzip.open(os.path.join(dir,file),'rb') as vcf:
+						# loop through each line
+						for line in vcf.readlines():
+							#skip headers
+							if line.startswith('#'):
+								pass
+							#count the number of non-empty rows
+							elif len(line) >1:
+								variant_count+=1
+							else:
+								pass
+
 				# print the number of variants found
 				print "variant count = " + str(variant_count)
 
@@ -64,16 +78,16 @@ class send_email():
 		#if there are empty vcfs 
 		if len(self.list_of_empty_vcfs) > 0:
 			print "sending email to say empty vcfs have been found"
-			self.email_subject="SWIFT ALERT: "+str(len(self.list_of_empty_vcfs))+"  empty VCFs present in run"
+			self.email_subject="EMPTY VCF ALERT: "+str(len(self.list_of_empty_vcfs))+"  empty VCFs present in run"
 			# set the email message to report a list of empty vcfs, one per line
-			self.email_message="The following samples have empty vcfs:\n"+"\n".join(self.list_of_empty_vcfs)
+			self.email_message="The following samples have empty vcfs:\n"+"\n".join(self.list_of_empty_vcfs)+"\nThese will NOT be able to be analysed within Ingenuity."
 			#send the email
 			self.send_an_email()
 		else:
-			self.email_subject="SWIFT ALERT: 0 VCFs present in run"
+			self.email_subject="vcf check - variants present in all VCFs"
 			print "sending email to say empty vcfs have been found"
 			# set the email message to report a list of empty vcfs, one per line
-			self.email_message="No empty VCFS present"
+			self.email_message="No empty VCFs present - all samples should be found in Ingenuity. If a sample is not present please contact gst-tr.mokaguys@nhs.net"
 			#send the email
 			self.send_an_email()
 
