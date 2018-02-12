@@ -1,4 +1,4 @@
-# dnanexus_check_for_empty_vcf - v1.1
+# dnanexus_check_for_empty_vcf - v1.2
 
 ## What does this app do?
 This app takes an array of VCF files.

@@ -1,12 +1,12 @@
 {
   "name": "check_for_empty_vcf",
   "title": "check for empty vcf",
-  "summary": "v1.1 - check for empty vcf",
+  "summary": "v1.2 - check for empty vcf",
   "tags": [
     "email", "cancer","swift"
   ],
   "properties": {
-    "github release": "v1.1"
+    "github release": "v1.2"
   },
   "dxapi": "1.0.0",
   "inputSpec": [
@@ -39,6 +39,8 @@
         "instanceType": "mem1_ssd1_x2"
       }
     },
+    "distribution" : "Ubuntu",
+    "release" : "14.04",
     "file": "src/code.sh",
     "interpreter": "bash"
   },
